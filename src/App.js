@@ -1,32 +1,21 @@
 import React from 'react';
-import './App.css';
-import HomePage from './components/home/homepage.component';
 import { Route, Switch } from 'react-router-dom';
 
-const HatsPage = (props) => {
-	console.log(props);
-	
-	return (
-		<div>
-			<h1>Hats Page</h1>
-		</div>
-	);
-}
+import './App.css';
 
-// function App() {
-// 	return (
-// 		<div>
-// 			<HomePage />
-// 		</div>
-// 	);
-// }
+import HomePage from './components/home/homepage.component';
+import ShopPage from './components/shop/shop.component';
+import Header from './components/header/header.component';
+
+
 
 function App() {
 	return (
 		<div>
+			<Header />
 			<Switch>
 				<Route exact path='/' component={HomePage} />
-				<Route exact path='/hats' component={HatsPage} />
+				<Route exact path='/shop' component={ShopPage} />
 			</Switch>
 		</div>
 	);
