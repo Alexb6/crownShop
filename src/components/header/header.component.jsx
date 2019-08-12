@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'; // connect is a HOC that let us to modify the component to access to things related to redux
 
 import './header.style.scss';
 
@@ -18,7 +19,7 @@ const Header = ({ currentUser }) => (
             <Link className='option' to='/contact'>
                 contact
             </Link>
-            {   currentUser
+            {currentUser
                 ?
                 <div className='option' onClick={() => auth.signOut()}>sign out</div>
                 :
@@ -28,6 +29,12 @@ const Header = ({ currentUser }) => (
             }
         </div>
     </div>
-)
+);
 
-export default Header;
+// from root-reducer, passing directly the state of the currentUser into the Header
+// instead of previously getting it down from the App <Header currentUser={this.state.currentUser} />
+const mapStateToProps = state => ({
+    currentUser: state.user.currentUser
+})
+
+export default connect(mapStateToProps)(Header);
