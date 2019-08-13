@@ -6,8 +6,10 @@ import './header.style.scss';
 
 import { ReactComponent as Logo } from '../../assets/images/logo/crown.svg';
 import { auth } from '../../firebase/firebase.utils';
+import CartIcon from '../cart/cart-icon.component';
+import { CartDropdown } from '../cart/cart-dropdown.component';
 
-const Header = ({ currentUser }) => (
+const Header = ({ currentUser, hidden }) => (
     <div className='header'>
         <Link className='logo-container' to='/' >
             <Logo className='logo' />
@@ -27,14 +29,17 @@ const Header = ({ currentUser }) => (
                     sign in
                 </Link>
             }
+            <CartIcon />
         </div>
+        {hidden ? null : <CartDropdown />}
     </div>
 );
 
 // from root-reducer, passing directly the state of the currentUser into the Header
 // instead of previously getting it down from the App <Header currentUser={this.state.currentUser} />
-const mapStateToProps = state => ({
-    currentUser: state.user.currentUser
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+    currentUser,
+    hidden
 })
 
 export default connect(mapStateToProps)(Header);

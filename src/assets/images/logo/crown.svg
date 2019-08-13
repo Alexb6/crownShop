@@ -1,17 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="50px" height="39px" viewBox="0 0 50 39" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
-    <title>Group</title>
-    <desc>Created with Sketch.</desc>
-    <g id="WiP" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Artboard" transform="translate(-90.000000, -38.000000)">
-            <g id="Group" transform="translate(90.000000, 38.000000)">
-                <polygon id="Rectangle" fill="#808282" points="3 14 25 26.5 47 14 40.855176 39 9.08421785 39"></polygon>
-                <polygon id="Triangle" fill-opacity="0.262838724" fill="#101A1A" points="25 8 40 39 10 39"></polygon>
-                <circle id="Oval" fill="#5E6363" cx="2" cy="9" r="2"></circle>
-                <circle id="Oval" fill="#5E6363" cx="25" cy="2" r="2"></circle>
-                <circle id="Oval" fill="#5E6363" cx="48" cy="9" r="2"></circle>
-            </g>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 50 39" style="enable-background:new 0 0 50 39;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;fill-rule:evenodd;clip-rule:evenodd;fill:#808282;}
+	.st1{opacity:0.7;fill-rule:evenodd;clip-rule:evenodd;fill:#808282;enable-background:new    ;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#101A1A;fill-opacity:0.2628;}
+	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#5E6363;}
+</style>
+<title>Group</title>
+<desc>Created with Sketch.</desc>
+<g id="WiP">
+	<g id="Artboard" transform="translate(-90.000000, -38.000000)">
+		<g id="Group" transform="translate(90.000000, 38.000000)">
+			<polygon id="Rectangle" class="st0" points="3,14 25,26.5 47,14 40.9,39 9.1,39 			"/>
+			<polygon id="Rectangle_1_" class="st1" points="25,25.5 47,14 40.9,39 18.3,39 			"/>
+			<polygon id="Rectangle_2_" class="st1" points="31.7,39 9.1,39 2.9,14 24.9,25.5 			"/>
+			<polygon id="Triangle" class="st2" points="25,8 40.9,39 9.1,39 			"/>
+			<circle id="Oval" class="st3" cx="2" cy="9" r="2"/>
+			<circle class="st3" cx="25" cy="2" r="2"/>
+			<circle class="st3" cx="48" cy="9" r="2"/>
+		</g>
+	</g>
+</g>
 </svg>
