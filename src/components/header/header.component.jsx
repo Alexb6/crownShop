@@ -7,7 +7,7 @@ import './header.style.scss';
 import { ReactComponent as Logo } from '../../assets/images/logo/crown.svg';
 import { auth } from '../../firebase/firebase.utils';
 import CartIcon from '../cart/cart-icon.component';
-import { CartDropdown } from '../cart/cart-dropdown.component';
+import CartDropdown from '../cart/cart-dropdown.component';
 
 const Header = ({ currentUser, hidden }) => (
     <div className='header'>
