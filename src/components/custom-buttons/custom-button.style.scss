@@ -39,15 +39,15 @@
     }
 
     &.inverted {
-        background-color: black;
-        color: white;
-        outline: none;        
+        background-color: white;
+        color: black;
+        outline: 1px solid black;
+        outline-offset: -1px;                
 
         &:hover {
-            background-color: white;
-            color: black;
-            outline: 1px solid black;
-            outline-offset: -1px;
+            background-color: black;
+            color: white;
+            outline: none;
         }
     }
 }
