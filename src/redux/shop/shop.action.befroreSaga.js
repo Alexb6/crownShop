@@ -9,21 +9,11 @@ import { firestore, convertCollectionsSnapshotToMap } from '../../firebase/fireb
     payload: collectionsMap
 }); */
 
+// Redux-thunk = action creator that return a function that gets the dispatch similar to mapsDispatchToProps
 export const fetchCollectionsStart = () => ({
     type: ShopActionTypes.FETCH_COLLECTIONS_START
 });
 
-export const fetchCollectionsSuccess = collectionMap => ({
-    type: ShopActionTypes.FETCH_COLLECTIONS_SUCCESS,
-    payload: collectionMap
-});
-
-export const fetchCollectionsFailure = errorMessage => ({
-    type: ShopActionTypes.FETCH_COLLECTIONS_FAILURE,
-    payload: errorMessage
-});
-
-// Redux-thunk = action creator that return a function that gets the dispatch similar to mapsDispatchToProps
 export const fetchCollectionsStartAsync = () => {
     return dispatch => {
         const collectionRef = firestore.collection('collections');
@@ -35,3 +25,13 @@ export const fetchCollectionsStartAsync = () => {
         }).catch(error => dispatch(fetchCollectionsFailure(error.message)));
     }
 };
+
+export const fetchCollectionsSuccess = collectionMap => ({
+    type: ShopActionTypes.FETCH_COLLECTIONS_SUCCESS,
+    payload: collectionMap
+});
+
+export const fetchCollectionsFailure = errorMessage => ({
+    type: ShopActionTypes.FETCH_COLLECTIONS_FAILURE,
+    payload: errorMessage
+});

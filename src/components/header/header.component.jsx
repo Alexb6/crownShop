@@ -6,15 +6,17 @@ import { createStructuredSelector } from 'reselect';
 // import './header.style.scss';
 
 import { ReactComponent as Logo } from '../../assets/images/logo/crown.svg';
-import { auth } from '../../firebase/firebase.utils';
+// import { auth } from '../../firebase/firebase.utils';
 import CartIcon from '../cart/cart-icon.component';
 import CartDropdown from '../cart/cart-dropdown.component';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selector';
 
+import { signOutStart } from '../../redux/user/user.action.js'
+
 import { HeaderContainer, LogoContainer, OptionsContainer, OptionLink } from './header.style';
 
-const Header = ({ currentUser, hidden }) => (
+const Header = ({ currentUser, hidden, signOutStart }) => (
     // <div className='header'>
     //     <Link className='logo-container' to='/' >
     //         <Logo className='logo' />
@@ -53,7 +55,7 @@ const Header = ({ currentUser, hidden }) => (
             </OptionLink>
             {currentUser
                 ?
-                <OptionLink as='div' onClick={() => auth.signOut()}>sign out</OptionLink>
+                <OptionLink as='div' onClick={signOutStart}>sign out</OptionLink>
                 :
                 <OptionLink to='/signin'>
                     sign in
@@ -67,9 +69,13 @@ const Header = ({ currentUser, hidden }) => (
 
 // from root-reducer, passing directly the state of the currentUser into the Header
 // instead of previously getting it down from the App <Header currentUser={this.state.currentUser} />
-const mapStateToProps = createStructuredSelector ({
+const mapStateToProps = createStructuredSelector({
     currentUser: selectCurrentUser,
     hidden: selectCartHidden
+});
+
+const mapDispatchToProps = dispatch => ({
+    signOutStart: () => dispatch(signOutStart())
 })
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

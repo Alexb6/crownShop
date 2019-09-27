@@ -6,7 +6,7 @@ import './sign-in.style.scss';
 import FormInput from './form-input.component';
 import CustomButton from '../custom-buttons/custom-button.component';
 
-import { googleSignInStart, emailSignInStart } from '../../redux/user/user.action';
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 
 class SignIn extends Component {
     constructor(props) {
@@ -20,10 +20,14 @@ class SignIn extends Component {
 
     handleSubmit = async event => {
         event.preventDefault();
-        const { emailSignInStart } = this.props;
         const { email, password } = this.state;
 
-        emailSignInStart(email, password);
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            this.setState({ email: '', password: '' });
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     handleChange = (event) => {
@@ -32,7 +36,7 @@ class SignIn extends Component {
     }
 
     render() {
-        const { googleSignInStart } = this.props;
+        const {signInWithGoogle} = this.state;
         return (
             <div className='sign-in'>
                 <h2>I already have an account</h2>
@@ -47,7 +51,7 @@ class SignIn extends Component {
                     />
                     <div className='buttons'>
                         <CustomButton type='submit' value='Submit Form'>sign in</CustomButton>
-                        <CustomButton type='button' onClick={googleSignInStart} isGoogleSignIn >sign in with gmail</CustomButton>
+                        <CustomButton type='button' onClick={signInWithGoogle} isGoogleSignIn >sign in with gmail</CustomButton>
                     </div>
                 </form>
             </div>
@@ -56,8 +60,7 @@ class SignIn extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    googleSignInStart: () => dispatch(googleSignInStart()),
-    emailSignInStart: (email, password) => dispatch(emailSignInStart({ email, password }))
+    signInWithGoogle: () => dispatch(signInWithGoogle())
 })
 
 export default connect(null, mapDispatchToProps)(SignIn);

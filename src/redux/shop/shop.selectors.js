@@ -20,4 +20,16 @@ export const selectCollectionsForPreview = createSelector (
     [selectCollections],
     // collections => Object.keys(collections).map(key => collections[key])
     collections => collections ? Object.keys(collections).map(key => collections[key]) : []
+);
+
+// Create new selector when using redux-thunk to pull-in isFetching property
+export const selectIsCollectionFetching = createSelector (
+    [selectShop],
+    shop => shop.isFetching
+);
+
+// Create a boolean (with double bang) to use it in the CollectionPageWithSpinner component
+export const selectIsCollectionLoaded = createSelector (
+    [selectShop],
+    shop => !!shop.collections
 )

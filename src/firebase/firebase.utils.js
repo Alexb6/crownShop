@@ -36,7 +36,6 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
     }
     return userRef;
-
 }
 
 // Use this function to upload our collections data to firebase (to use in App.js)
@@ -67,8 +66,18 @@ export const convertCollectionsSnapshotToMap = (collections) => {
     return transformedCollection.reduce((accumulator, collection) => {
         accumulator[collection.title.toLowerCase()] = collection;
         return accumulator;
-    } , {})
+    } , {});
 
+}
+
+// Promise method to use in user's sagas to check if a user is signed in
+export const getCurrentUser = () => {
+    return new Promise((resolve, reject) =>{
+        const unsubcribe = auth.onAuthStateChanged(userAuth =>{
+            unsubcribe();
+            resolve(userAuth);
+        }, reject);
+    });
 }
 
 firebase.initializeApp(config);
@@ -77,8 +86,8 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 // Authentifacation with google account
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const goggleProvider = new firebase.auth.GoogleAuthProvider();
+goggleProvider.setCustomParameters({ prompt: 'select_account' });
+export const signInWithGoogle = () => auth.signInWithPopup(goggleProvider);
 
 export default firebase;
